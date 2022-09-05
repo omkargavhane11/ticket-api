@@ -4,11 +4,10 @@ const { Schema } = require("mongoose");
 const Query = require("./queryModel");
 
 const querySchema = new mongoose.Schema({
-    // queryNo: {
-    // type: String,
-    // required: true,
-    // min: 3,
-    // },
+    queryNo: {
+        type: String,
+        required: true,
+    },
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: 'User',
