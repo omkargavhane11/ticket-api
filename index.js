@@ -12,6 +12,8 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 
+const PORT = process.env.PORT
+
 // connecting with mongo
 mongoose.connect(process.env.MONGO_URL,
     { useNewUrlParser: true, useUnifiedTopology: true }, () => {
@@ -29,4 +31,4 @@ app.use("/api/messages", messageRouter);
 app.use("/api/query", queryRouter);
 
 
-app.listen(8080, () => console.log("Server started..."));
+app.listen(PORT, () => console.log("Server started..."));
