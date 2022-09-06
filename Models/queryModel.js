@@ -14,9 +14,9 @@ const querySchema = new mongoose.Schema({
         required: true,
     },
     assignedTo: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: 'User',
-        default: ""
+        default: 0
     },
     status: {
         type: String,

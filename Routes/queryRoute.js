@@ -39,7 +39,7 @@ router.get("/student/:userId", async (req, res) => {
 // get single query
 router.get("/single/:id", async (req, res) => {
     try {
-        const findQuery = await Query.findOne({ _id: req.params.id });
+        const findQuery = await Query.findOne({ _id: req.params.id }).populate("assignedTo");
         res.status(200).send(findQuery);
     } catch (error) {
         res.status(500).send(error.message);
