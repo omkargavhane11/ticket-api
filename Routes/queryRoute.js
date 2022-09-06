@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
 // get all queries
 router.get("/", async (req, res) => {
     try {
-        const getAllQuery = await Query.find({});
+        const getAllQuery = await Query.find({}).populate("assignedTo");
         res.status(200).send(getAllQuery);
     } catch (error) {
         res.status(500).send(error.message);
@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
 // get query by user._id
 router.get("/student/:userId", async (req, res) => {
     try {
-        const queries = await Query.find({ createdBy: req.params.userId });
+        const queries = await Query.find({ createdBy: req.params.userId }).populate("assignedTo");
         res.status(200).send(queries);
     } catch (error) {
         res.status(500).send(error.message);
