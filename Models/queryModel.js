@@ -16,7 +16,7 @@ const querySchema = new mongoose.Schema({
     assignedTo: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        default: 0
+        default: null
     },
     status: {
         type: String,
