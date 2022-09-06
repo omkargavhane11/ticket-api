@@ -27,9 +27,8 @@ router.get("/", async (req, res) => {
 // get user by ID
 router.get("/:id", async (req, res) => {
     try {
-        const getUser = await User.find({ _id: req.params.id });
-        const { password, ...others } = getUser._doc;
-        res.status(200).send(others)
+        const getUser = await User.find({ _id: req.params.id }, { password: 0 });
+        res.status(200).send(getUser)
     } catch (error) {
         res.status(500).send({ msg: error });
     }
