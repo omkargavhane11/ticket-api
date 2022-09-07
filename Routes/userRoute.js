@@ -7,10 +7,10 @@ const User = require("../Models/userModel");
 router.post("/register", async (req, res) => {
     try {
         const newUser = await User.create(req.body);
-        res.status(200).send({ msg: "User created successfully" })
+        res.send({ msg: "User created successfully" })
         // console.log(req.body)
     } catch (error) {
-        res.status(500).send({ msg: "Error creating user" });
+        res.send({ msg: "Error creating user" });
     }
 })
 
@@ -18,9 +18,9 @@ router.post("/register", async (req, res) => {
 router.get("/", async (req, res) => {
     try {
         const getAll = await User.find({}, { password: 0 });
-        res.status(200).send(getAll)
+        res.send(getAll)
     } catch (error) {
-        res.status(500).send({ msg: error });
+        res.send({ msg: error });
     }
 })
 
@@ -28,9 +28,9 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
     try {
         const getUser = await User.find({ _id: req.params.id }, { password: 0 });
-        res.status(200).send(getUser)
+        res.send(getUser)
     } catch (error) {
-        res.status(500).send({ msg: error });
+        res.send({ msg: error });
     }
 })
 
