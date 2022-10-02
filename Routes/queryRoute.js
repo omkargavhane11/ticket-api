@@ -49,8 +49,7 @@ router.get("/single/:id", async (req, res) => {
 // pick query
 router.put("/pick", async (req, res) => {
     try {
-        const findMentor = await User.findOne({ _id: req.body.mentorId });
-        const findQuery = await Query.findOneAndUpdate({ _id: req.body.queryId }, { $set: { assignedTo: findMentor._id, status: "assigned" } });
+        const findQuery = await Query.findOneAndUpdate({ _id: req.body.queryId }, { $set: { assignedTo: req.body.mentorId, status: "assigned" } });
         res.send(findQuery)
     } catch (error) {
         res.status(500).send(error.message);
