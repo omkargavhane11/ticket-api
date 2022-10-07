@@ -10,7 +10,12 @@ const authRouter = require("./Routes/authRoute");
 dotenv.config();
 const app = express();
 app.use(express.json())
-app.use(cors())
+app.use(cors(
+    {
+        origin:
+            "https://myticket77.netlify.app"
+    }
+))
 
 const PORT = process.env.PORT
 
