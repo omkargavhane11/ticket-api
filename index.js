@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(cors(
     {
         origin:
-            "https://myticket77.netlify.app"
+            process.env.CLIENT_URL
     }
 ))
 // app.use(cors());
